@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resultas",
+  "info": {
+    "singularName": "resulta",
+    "pluralName": "resultas",
+    "displayName": "resulta"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "resulta": {
+      "type": "string"
+    }
+  }
+}
