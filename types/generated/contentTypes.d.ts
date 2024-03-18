@@ -842,13 +842,13 @@ export interface ApiRameurRameur extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     bateau: Attribute.String & Attribute.Required & Attribute.Unique;
-    heure: Attribute.Time;
     club: Attribute.Media & Attribute.Required;
     course: Attribute.Relation<
       'api::rameur.rameur',
       'manyToOne',
       'api::coursse.coursse'
     >;
+    slug: Attribute.UID<'api::rameur.rameur', 'name'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

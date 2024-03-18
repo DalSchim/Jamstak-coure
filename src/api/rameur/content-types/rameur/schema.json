@@ -22,9 +22,6 @@
       "unique": true,
       "required": true
     },
-    "heure": {
-      "type": "time"
-    },
     "club": {
       "type": "media",
       "multiple": true,
@@ -38,6 +35,11 @@
       "relation": "manyToOne",
       "target": "api::coursse.coursse",
       "inversedBy": "rameurs"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     }
   }
 }
