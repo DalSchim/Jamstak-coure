@@ -9,7 +9,7 @@ export default factories.createCoreController('api::rameur.rameur', ({strapi}) =
     const {id} = ctx.params
     const entity = await strapi.db.query('api::rameur.rameur').findOne({
       where: {slug: id},
-      populate: ['club', 'course']
+      populate: ['image', 'club']
     })
     const sanitizedEntity = await this.sanitizeOutput(entity, ctx)
     return this.transformResponse(sanitizedEntity)

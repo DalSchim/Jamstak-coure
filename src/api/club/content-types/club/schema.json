@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clubs",
+  "info": {
+    "singularName": "club",
+    "pluralName": "clubs",
+    "displayName": "Club",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "rameurs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rameur.rameur",
+      "mappedBy": "club"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true,
+      "targetField": "name"
+    }
+  }
+}

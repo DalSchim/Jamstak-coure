@@ -788,42 +788,31 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiCoursseCoursse extends Schema.CollectionType {
-  collectionName: 'coursses';
+export interface ApiClubClub extends Schema.CollectionType {
+  collectionName: 'clubs';
   info: {
-    singularName: 'coursse';
-    pluralName: 'coursses';
-    displayName: 'Course';
+    singularName: 'club';
+    pluralName: 'clubs';
+    displayName: 'Club';
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    image: Attribute.Media;
     rameurs: Attribute.Relation<
-      'api::coursse.coursse',
+      'api::club.club',
       'oneToMany',
       'api::rameur.rameur'
     >;
-    resulta: Attribute.Relation<
-      'api::coursse.coursse',
-      'oneToOne',
-      'api::resulta.resulta'
-    >;
+    slug: Attribute.UID<'api::club.club', 'name'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::coursse.coursse',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::club.club', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::coursse.coursse',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::club.club', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -837,21 +826,20 @@ export interface ApiRameurRameur extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     bateau: Attribute.String & Attribute.Required & Attribute.Unique;
-    club: Attribute.Media & Attribute.Required;
-    course: Attribute.Relation<
+    slug: Attribute.UID<'api::rameur.rameur', 'name'> & Attribute.Required;
+    club: Attribute.Relation<
       'api::rameur.rameur',
       'manyToOne',
-      'api::coursse.coursse'
+      'api::club.club'
     >;
-    slug: Attribute.UID<'api::rameur.rameur', 'name'> & Attribute.Required;
+    rameurid: Attribute.String & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::rameur.rameur',
       'oneToOne',
@@ -915,7 +903,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::coursse.coursse': ApiCoursseCoursse;
+      'api::club.club': ApiClubClub;
       'api::rameur.rameur': ApiRameurRameur;
       'api::resulta.resulta': ApiResultaResulta;
     }

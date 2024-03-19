@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -22,24 +22,20 @@
       "unique": true,
       "required": true
     },
-    "club": {
-      "type": "media",
-      "multiple": true,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "course": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::coursse.coursse",
-      "inversedBy": "rameurs"
-    },
     "slug": {
       "type": "uid",
       "targetField": "name",
       "required": true
+    },
+    "club": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::club.club",
+      "inversedBy": "rameurs"
+    },
+    "rameurid": {
+      "type": "string",
+      "unique": true
     }
   }
 }
