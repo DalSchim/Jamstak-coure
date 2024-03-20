@@ -27,15 +27,15 @@
       "targetField": "name",
       "required": true
     },
+    "rameurid": {
+      "type": "string",
+      "unique": true
+    },
     "club": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::club.club",
       "inversedBy": "rameurs"
-    },
-    "rameurid": {
-      "type": "string",
-      "unique": true
     }
   }
 }

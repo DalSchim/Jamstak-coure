@@ -4,8 +4,7 @@
   "info": {
     "singularName": "club",
     "pluralName": "clubs",
-    "displayName": "Club",
-    "description": ""
+    "displayName": "Club"
   },
   "options": {
     "draftAndPublish": false
@@ -18,26 +17,23 @@
       "required": true
     },
     "image": {
+      "allowedTypes": [
+        "images"
+      ],
       "type": "media",
       "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "required": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     },
     "rameurs": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::rameur.rameur",
       "mappedBy": "club"
-    },
-    "slug": {
-      "type": "uid",
-      "required": true,
-      "targetField": "name"
     }
   }
 }

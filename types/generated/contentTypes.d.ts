@@ -794,7 +794,6 @@ export interface ApiClubClub extends Schema.CollectionType {
     singularName: 'club';
     pluralName: 'clubs';
     displayName: 'Club';
-    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -802,12 +801,12 @@ export interface ApiClubClub extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     image: Attribute.Media;
+    slug: Attribute.UID<'api::club.club', 'name'> & Attribute.Required;
     rameurs: Attribute.Relation<
       'api::club.club',
       'oneToMany',
       'api::rameur.rameur'
     >;
-    slug: Attribute.UID<'api::club.club', 'name'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::club.club', 'oneToOne', 'admin::user'> &
@@ -832,12 +831,12 @@ export interface ApiRameurRameur extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     bateau: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.UID<'api::rameur.rameur', 'name'> & Attribute.Required;
+    rameurid: Attribute.String & Attribute.Unique;
     club: Attribute.Relation<
       'api::rameur.rameur',
       'manyToOne',
       'api::club.club'
     >;
-    rameurid: Attribute.String & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
