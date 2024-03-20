@@ -19,8 +19,8 @@
     },
     "bateau": {
       "type": "string",
-      "unique": true,
-      "required": true
+      "unique": false,
+      "required": false
     },
     "slug": {
       "type": "uid",

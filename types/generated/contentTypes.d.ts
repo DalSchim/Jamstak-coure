@@ -829,7 +829,7 @@ export interface ApiRameurRameur extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    bateau: Attribute.String & Attribute.Required & Attribute.Unique;
+    bateau: Attribute.String;
     slug: Attribute.UID<'api::rameur.rameur', 'name'> & Attribute.Required;
     rameurid: Attribute.String & Attribute.Unique;
     club: Attribute.Relation<
